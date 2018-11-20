@@ -7,11 +7,11 @@ users=$( who | awk '{print $1}' )
 
 echo "
 
-This is a snapshot of your current system:
+\e[7mThis is a snapshot of your current system:\e[27m
 
-Disk Space Used:           $diskused
-Free Memory:               $memfree
-Logged-In Users:           $users
-Open Internet Connections: $connections
+\e[38;5;208;7mDisk Space Used:           $diskused
+\e[38;5;31;7mFree Memory:               $memfree
+\e[38;5;208;7mLogged-In Users:           $users
+\e[38;5;31;7mOpen Internet Connections: $connections
 
 "
