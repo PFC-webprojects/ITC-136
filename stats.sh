@@ -5,7 +5,7 @@ memfree=$( free -mh | grep Mem: | awk '{print $7}' )
 connections=$( netstat | grep tcp )
 users=$( who | awk '{print $1}' )
 
-echo "
+echo -e "
 
 \e[7mThis is a snapshot of your current system:\e[27m
 
