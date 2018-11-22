@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Stats
+Comment=Hello ITC 136
+Exec=/usr/bin/gnome-terminal -e "bash -c '/usr/local/bin/stats; bash'"
+Icon=/home/pcaliandro/Desktop/Trek920.jpeg
+Terminal=false
+Type=Application
+Categories=Utility;Application;
