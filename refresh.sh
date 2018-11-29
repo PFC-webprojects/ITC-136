@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git_init(){	
-        read -p "enter the link of repository: " remote_link
+        read -p "Please enter the link of the remote repository: " remote_link
 	git init
 	git remote add origin "$remote_link"
 	git pull origin master
@@ -26,7 +26,7 @@ git_rebase(){
 do_merge(){
 	while true; 
 	do
-    	read -p "Do your want to merge the repository(yes or no):" yn
+    	read -p "Do your want to merge the repository? (yes or no):" yn
     	case $yn in
         	[Yy]* )
 				git_merge
@@ -41,7 +41,7 @@ do_merge(){
 do_rebase(){
 	while true; 
 	do
-    	read -p "Do your want to rebase the repository(yes or no):" yn
+    	read -p "Do your want to rebase the repository? (yes or no):" yn
     	case $yn in
         	[Yy]* )
 				git_rebase
@@ -59,11 +59,11 @@ merge_rebase_options(){
     	read -p "Enter number 1 to git merge, or number 2 to git rebase: " nu
     	case $nu in
         	"1" )
-				echo "you chose number 1 that is merge"
+				echo "You chose number 1; that is merge."
             	do_merge
 				break;;
         	"2" )
-				echo "you chose number 2 that is rebase"
+				echo "You chose number 2; that is rebase."
             	do_rebase
 				break;;
         	* ) echo "Please enter number 1 or 2.";;
@@ -77,11 +77,11 @@ fetch_pull_options(){
     	read -p "Enter number 1 to git pull, or number 2 to git fetch: " nu
     	case $nu in
         	"1" )
-				echo "you chose number 1 that is pull"
+				echo "You chose number 1; that is pull."
             	git_pull
 				break;;
         	"2" )
-				echo "you chose number 2 that is fetch"
+				echo "You chose number 2; that is fetch."
             	git_fetch
             	merge_rebase_options
 				break;;
@@ -93,7 +93,7 @@ fetch_pull_options(){
 do_fetch_pull_options(){
 	while true; 
 	do
-    	read -p "Do you want to update from remote repository(yes or no):" yn
+    	read -p "Do you want to update from the remote repository? (yes or no):" yn
     	case $yn in
         	[Yy]* )
 				fetch_pull_options
@@ -111,21 +111,20 @@ main(){
 
 	if [[ $git_status_results =~ 'On branch master' ]]; then
 
-		echo "There is a git repository"
-		
+		echo "This directory is a git repository."
 
             git_remote_status_results=$(git remote show origin)
         
             if [[ $git_remote_status_results =~ 'up to date' ]]; then
         	
-        	echo "Local repo is Up To Date."
+        	echo "The local repository is up to date."
             else
         	
-        	echo "Local repo is  Out of Date"
+        	echo "The local repository is out of date"
         	do_fetch_pull_options
             fi
 	else
-            echo "You need to create a git repository first, we will do it for you."
+            echo "You will need to clone a git repository first.  We will do it for you."
             git_init
 	fi
 }
